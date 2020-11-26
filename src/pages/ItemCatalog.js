@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { Item, Form, Label, Select } from "semantic-ui-react";
+import { Item, Form} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { isNullOrUndefined } from "util";
 import getAllEconomicResources from "../queries/EconomicResource/getAllEconomicResources";
@@ -52,10 +52,11 @@ class ItemCard extends React.Component {
   }
 }
 
-const optionSort = [
-  { key: "alp", text: "Alphabetical", value: "alphabetical" },
-  { key: "dis", text: "Distance", value: "distance" },
-];
+// Unused as of 11/2020, commented out
+// const optionSort = [
+//   { key: "alp", text: "Alphabetical", value: "alphabetical" },
+//   { key: "dis", text: "Distance", value: "distance" },
+// ];
 
 class ItemCatalog extends React.Component {
   constructor() {

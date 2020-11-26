@@ -1,7 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { graphql, compose } from "react-apollo";
-import gql from "graphql-tag";
 import "semantic-ui-css/semantic.min.css";
 import { withRouter } from "react-router-dom";
 import {
@@ -44,7 +41,7 @@ mutationVars["scopeId"] = undefined;
 mutationVars["providerId"] = undefined;
 mutationVars["affectedResourceClassifiedAsId"] = undefined;
 
-let resourceClassificationDropdown = undefined; //Will be defined in componentDidMount
+// let resourceClassificationDropdown = undefined; //Will be defined in componentDidMount
 
 class CreateInventoryItem extends React.Component {
   constructor(props) {
@@ -73,6 +70,7 @@ class CreateInventoryItem extends React.Component {
     } else {
       this.resourceClassificationList = [];
       // Generating unique_ids for dropdown labels as React requires it.
+      // eslint-disable-next-line no-unused-vars
       let unique_id = 0;
       // Note that we're storing the whole event, ie, the resourceClassification
       // object as the value so you can always come back and refer to it and get
@@ -123,7 +121,7 @@ class CreateInventoryItem extends React.Component {
       let i = 0;
       for (i = 0; i < listOfResourceClassificationObjects.length; i++) {
         if (
-          resourceClassificationName ==
+          resourceClassificationName ===
           listOfResourceClassificationObjects[i].name
         ) {
           resourceClassificationID = listOfResourceClassificationObjects[i].id;
@@ -181,7 +179,7 @@ class CreateInventoryItem extends React.Component {
     this.numberOfSubmitAttempts += 1;
     if (!this.props.loading && !this.props.error && !this.formSubmitted) {
       this.validateInput();
-      if (this.state.errorMessageList.length == 0) {
+      if (this.state.errorMessageList.length === 0) {
         this.setMutationVariablesFromUserInput();
         this.createInventoryItem();
         //State state to true and display message
@@ -195,16 +193,16 @@ class CreateInventoryItem extends React.Component {
   };
 
   validateInput = () => {
-    this.state.errorMessageList = [];
-    if (this.state.name == "") {
+    this.state.setState({ errorMessageList: [] });
+    if (this.state.name === "") {
       this.state.errorMessageList.push("\nPlease enter a name for the item. ");
     }
-    if (this.state.resourceClassification == "") {
+    if (this.state.resourceClassification === "") {
       this.state.errorMessageList.push(
         "\nPlease select a resource classification type. "
       );
     }
-    if (this.state.quantity == "") {
+    if (this.state.quantity === "") {
       this.state.errorMessageList.push("\nPlease enter a quantity. ");
     }
   };
@@ -239,14 +237,14 @@ class CreateInventoryItem extends React.Component {
       let listOfUnitObjectsInDB = this.props.unitList;
       let userUnitInput = this.state.units;
       if (
-        this.unitExistsInDatabase(userUnitInput, listOfUnitObjectsInDB) == false
+        this.unitExistsInDatabase(userUnitInput, listOfUnitObjectsInDB) === false
       ) {
         this.createUnitInDB(userUnitInput);
       }
       let i = 0;
       for (i = 0; i < listOfUnitObjectsInDB.length; i++) {
         let unitObject = listOfUnitObjectsInDB[i];
-        if (unitObject.name.toLowerCase() == userUnitInput.toLowerCase()) {
+        if (unitObject.name.toLowerCase() === userUnitInput.toLowerCase()) {
           unitID = unitObject.id;
         }
       }
@@ -262,7 +260,7 @@ class CreateInventoryItem extends React.Component {
     let i = 0;
     for (i = 0; i < listOfUnitObjectsInDB.length; i++) {
       let unitObject = listOfUnitObjectsInDB[i];
-      if (unitObject.name.toLowerCase() == userUnitInput.toLowerCase()) {
+      if (unitObject.name.toLowerCase() === userUnitInput.toLowerCase()) {
         unitExistsInDatabase = true;
       }
     }

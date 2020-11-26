@@ -8,11 +8,9 @@ import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import getOrganizationById from "../../queries/Organization/getOrganizationById.tsx";
 import getEconomicResourceById from "../../queries/EconomicResource/getEconomicResourceById.tsx";
-import { isNullOrUndefined } from "util";
 import { Item, Button, Loader } from "semantic-ui-react";
 import { connect } from "react-redux";
 import EditInventoryItem from "../Inventory/EditInventoryItem";
-import { Link, Redirect, BrowserRouter } from "react-router-dom";
 import getMyAgent from "../../queries/Agent/getMyAgent";
 
 import { withRouter } from "react-router-dom";
@@ -105,7 +103,7 @@ export const EconomicResource = (props) => {
       <Item.Image
         className={"ui small rounded image"}
         src={
-          isNullOrUndefined(economicResource.image) ||
+          !economicResource ||
           economicResource.image === ""
             ? default_image
             : economicResource.image
@@ -158,7 +156,7 @@ class OrganizationInventory extends React.Component {
   };
 
   setConnected = (connected) => {
-    if (this.state.connected != connected) {
+    if (this.state.connected !== connected) {
       this.setState({ connected: connected });
     }
   };

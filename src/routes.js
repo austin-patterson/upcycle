@@ -24,7 +24,6 @@ import PersonPage from "./pages/Api/person";
 import EconomicEvent from "./pages/Api/EconomicEvent";
 import CreateEconomicEvent from "./pages/Api/CreateEconomicEvent";
 import AgentRelationshipRoles from "./pages/Api/AgentRelationshipRole";
-import CreateInventoryItem from "./pages/Inventory/createInventoryItem";
 
 class Routes extends Component {
   render() {

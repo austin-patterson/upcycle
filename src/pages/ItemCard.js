@@ -4,8 +4,7 @@ import React from "react";
 import getMyAgent from "../queries/Agent/getMyAgent";
 import "semantic-ui-css/semantic.min.css";
 import { withRouter } from "react-router-dom";
-import ItemCard from "./ItemCard";
-import { Item, Button, Loader } from "semantic-ui-react";
+import { Item, Loader } from "semantic-ui-react";
 
 // import { DiscussionEmbed } from "disqus-react";
 import { query as GetEconomicResourceByIDQuery } from "../queries/EconomicResource/getEconomicResourceById";
@@ -43,6 +42,7 @@ const ItemInfoQuery = (props) => {
 export class ItemInfoCard extends React.Component {
   constructor(props) {
     super(props);
+    // eslint-disable-next-line no-unused-vars
     let image = "";
     this.state = {
       image: "",
@@ -55,7 +55,7 @@ export class ItemInfoCard extends React.Component {
     };
   }
   setConnected = (connected) => {
-    if (this.state.connected != connected) {
+    if (this.state.connected !== connected) {
       this.setState({ connected: connected });
     }
   };
@@ -77,6 +77,7 @@ export class ItemInfoCard extends React.Component {
         });
       }
     }
+    // eslint-disable-next-line no-unused-vars
     let itemID = this.props.EconomicResouceId;
   };
   render() {
@@ -85,7 +86,7 @@ export class ItemInfoCard extends React.Component {
     // But not that you won't be able to moderate (delete comments) in a dev DISQUS config so make sure
     // this is an empty string '' if switching to prod environment.
     // Only workaround to moderate this would be to delete the whole item, and thereby lose all comments
-    let NODE_ENV = ''
+    // let NODE_ENV = ''
     // let URL = DISQUS_SITENAME + NODE_ENV + "orginventory/" + this.props.EconomicResouceId;
     // console.log(URL)
     return (

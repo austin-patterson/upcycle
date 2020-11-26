@@ -10,8 +10,7 @@ import {connect} from 'react-redux';
 import * as defaultImage from "../../resources/defaultImage.jpg";
 import * as logo from '../../resources/upcycleLogo.png'
 import React, {Component} from "react";
-import {render} from "react-dom";
-import {Image, Menu, Input, Dropdown, Loader, Button} from "semantic-ui-react";
+import {Image, Menu, Input, Dropdown, Loader} from "semantic-ui-react";
 import styles from './Header.css';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -88,7 +87,7 @@ let AgentRelationships = getAllAgentRelationships(({agentRelationshipList, loadi
             <div className={styles.blueify}>
                 <Menu.Item fitted="vertically" >
                     <Dropdown selection width={250} options={orgList} className={styles.blueify}
-                              text={currentOrganizationId != -1 ?<OrgNameByID organizationId={currentOrganizationId} /> :
+                              text={currentOrganizationId !== -1 ?<OrgNameByID organizationId={currentOrganizationId} /> :
                                   <div className={styles.blueify}>
                                   <Image src={defaultImage} avatar/>
                                   <span>{"Select an organization ▼"}</span>
