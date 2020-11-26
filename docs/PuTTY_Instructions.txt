@@ -1,0 +1,17 @@
+To create ssh tunnel using PuTTY:
+
+1. Open PuTTY
+2. Fill in the Host Name field with "Sdlstudentvm05.msoe.edu" and ensure port number is 22
+3. In left hand menu, expand the SSH dropdown
+4. Select Tunnels
+5. Enter 8000 in source port
+6. Enter destination as localhost:8000
+7. Click Add
+8. Return to Session menu, enter a name into "Saved Sessions", and save
+
+To Run:
+Load saved session
+Select Open
+Login to the terminal that opens
+
+Connection will tunnel as long as terminal window remains open.

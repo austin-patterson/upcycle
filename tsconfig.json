@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "lib": ["dom", "es2015", "es2017"],
+    "module": "esnext",
+    "target": "es5",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "files": ["./custom.d.ts"/*, "./typings/index.d.ts"*/], //TODO COMMENTED OUT THIS NOT SURE WHY IT WAS BREAKING IT
+  "include": ["./packages/**/*.ts", "./packages/**/*.tsx"],
+  "exclude": ["*/node_modules/*"]
+}
