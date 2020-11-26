@@ -6,34 +6,34 @@
  * @since:   2017-06-23
  */
 
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 
-import { coreAgentFields, coreOrganizationFields } from "../_fragments/Agent"
+import { coreAgentFields } from "../_fragments/Agent";
 
 const query = gql`
-query($token: String) {
-  viewer(token: $token) {
-    myAgent {
-      ...coreAgentFields
-      agentRelationships {
-        id
-        relationship {
-          label
-          category
-        }
-        object {
-          name
-          type
-          image
+  query($token: String) {
+    viewer(token: $token) {
+      myAgent {
+        ...coreAgentFields
+        agentRelationships {
           id
+          relationship {
+            label
+            category
+          }
+          object {
+            name
+            type
+            image
+            id
+          }
         }
       }
     }
   }
-}
-${coreAgentFields}
+  ${coreAgentFields}
 `;
 
 export default compose(
@@ -50,8 +50,8 @@ export default compose(
     props: ({ ownProps, data: { viewer, loading, error, refetch } }) => ({
       loading,
       error,
-      refetchCurrentOrgs: refetch,  // :NOTE: call this in the component to force reload the data
-      organizations: viewer ? viewer.myAgent.agentRelationships : null
+      refetchCurrentOrgs: refetch, // :NOTE: call this in the component to force reload the data
+      organizations: viewer ? viewer.myAgent.agentRelationships : null,
     }),
   })
-)
+);
